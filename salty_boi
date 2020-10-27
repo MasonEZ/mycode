@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+
+icecream = ["flavors", "salty"]
+#New list
+icecream.append(99)
+#fix above
+name= input("What's your NAME!? ")
+#Ask for user name
+print(f"{icecream[2]} {icecream[0]} and {name} chooses to be {icecream[1]}.")
+
+
