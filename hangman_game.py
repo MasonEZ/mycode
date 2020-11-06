@@ -10,9 +10,13 @@ import time
 words = ["harmony", "umbrella", "window", "kislev", "spooky", "season", "mail", "fig",
          "laptop", "dog", "band", "lemon", "beautiful", "handle", "syrup"]
 
-guess = []
+#mainly storage or definitions for variables
 answer = random.choice(words)
 answer_length = len(answer)
+guess = []
+right = ['_'] * len(answer)
+wrong = ['_'] * len(answer)
+
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 letter_storage = []
 
@@ -65,7 +69,7 @@ def guessing() -> None:
     attempts = 5
     print_guesses_taken(guess_taken, attempts)
 
-    while guess_taken <= attempts:
+    while guess_taken != attempts: #Changed from >=
         guess = input("Pick a letter\n").lower()
         # Checking input
         if not guess in alphabet:
@@ -76,17 +80,17 @@ def guessing() -> None:
         else:
             letter_storage.append(guess)
             if guess in answer:
+                right.append(guess)
                 print("Correct, choose another!")
                 for i in range(0, answer_length):
                     if answer[i] == guess:
                         answer[i] == guess
-                print_word_to_guess(guess)
+                print_word_to_guess(guess)  #(guess.format(answer))?
                 print_guesses_taken(guess_taken, attempts)
-                return
-                exec(beginning)
 
             else:
                 print("Ding Dong you are Rong. Try Again!")
+                wrong.append(guess)
                 guess_taken += 1
                 print_guesses_taken(guess_taken, attempts)
                 if guess_taken == 5:
@@ -100,7 +104,7 @@ def guessing() -> None:
 
 
 
-guessing()
+            guessing()
 
 
 if __name__ == "__main__":
